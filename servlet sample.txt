@@ -1,0 +1,46 @@
+import java.io.IOException; 
+import java.io.PrintWriter; 
+import javax.servlet.ServletConfig; 
+import javax.servlet.ServletException; 
+import javax.servlet.http.HttpServlet; 
+import javax.servlet.http.HttpServletRequest; 
+import javax.servlet.http.HttpServletResponse; 
+
+	// CLASS NAME SAME AS <servlet-class> IN WEB.XML
+
+public class ServletLifeCycle extends HttpServlet { 
+
+	//CONSTRUCTOR
+	public ServletLifeCycle() {
+ 		System.out.println("Default constructor"); 
+	} 
+	public void init(ServletConfig config) { -------- first executed
+		System.out.println("Init method...!"); 
+	} 
+
+---------after init(), executes service() or doGet() or doPost()
+
+	public void doGet(HttpServletRequest req,HttpServletResponse res)throws ServletException,IOException { 
+		res.setContentType("text/html"); 
+		PrintWriter pw = res.getWriter(); 
+		pw.println("Hello, Welcome to splessons...!"); 
+		pw.close(); 
+	} 
+----------finally destroy will be executed
+	public void destroy() { 
+		System.out.println("Destroy method"); 
+	} 
+} 
+
+Web.xml  ---------------------------1=> Servlet container will first load this
+<web-app> 
+	<servlet> 
+		<servlet-name>second</servlet-name> ----- 4 (checks if 2 & 4 are same)
+		<servlet-class>ServletLifeCycle</servlet-class> --------5 Loads the java class
+		<load-on-startup>1</load-on-startup> 
+	</servlet> 
+	<servlet-mapping> 
+		<servlet-name>second</servlet-name> ----------3
+		<url-pattern>/lifecycle1</url-pattern> -------2
+	</servlet-mapping> 
+</web-app>

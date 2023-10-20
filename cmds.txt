@@ -1,0 +1,24 @@
+java -version 
+echo %JAVA_HOME%  
+ipconfig 
+---------------------------------------------------
+mvn exec:java -Dexec.mainClass="com.kgisl.maven1.App"
+mvn archetype:generate -DgroupId=com.kgisl.maven1 -DartifactId=maven1 -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+mvn clean install
+---------------------------------------------------
+set path=C:\Program Files\Java\jdk1.8.0_131\bin
+set path=C:\Program Files\Java\jdk-16.0.2\bin
+---------------------------------------------------
+WEB APPLICATION(JAVA, MAVEN, SERVLET)
+1)mvn generate
+2)pom.xml-add dependencies and plugins
+3)check the version of servlet api and add corresponding specification in web.xml in <web-ap>
+4)check servlet name and class ( <servlet-name> & <servlet-class>)
+5)servlet mapping
+6)Index.jsp-> get input
+
+
+
+git remote add origin https://github.com/snehasara06/Java.git
+git branch -M main
+git push -u origin main
